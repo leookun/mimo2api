@@ -152,17 +152,19 @@ func callMimoAPI(acc *MimoAccount, query string, thinking bool) (string, string,
 		MsgId:          uuid.New().String()[:32],
 		ConversationId: uuid.New().String()[:32],
 		Query:          query,
-		ModelConfig:    ModelConfig{EnableThinking: thinking, Temperature: 0, TopP: 0, WebSearchStatus: "disabled", Model: "mimo-v2-flash-studio"},
+		ModelConfig:    ModelConfig{EnableThinking: thinking, Temperature: 0.8, TopP: 0.95, WebSearchStatus: "disabled", Model: "mimo-v2-flash-studio"},
 		MultiMedias:    []any{},
 	}
 	body, _ := json.Marshal(mimoReq)
 	apiURL := fmt.Sprintf("https://aistudio.xiaomimimo.com/open-apis/bot/chat?xiaomichatbot_ph=%s", url.QueryEscape(acc.XiaomichatbotPh))
 
 	req, _ := http.NewRequest("POST", apiURL, bytes.NewReader(body))
+	req.Header.Set("Accept", "*/*")
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Origin", "https://aistudio.xiaomimimo.com")
 	req.Header.Set("Referer", "https://aistudio.xiaomimimo.com/")
-	req.Header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36")
+	req.Header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36")
+	req.Header.Set("x-timezone", "Asia/Shanghai")
 	req.AddCookie(&http.Cookie{Name: "serviceToken", Value: acc.ServiceToken})
 	req.AddCookie(&http.Cookie{Name: "userId", Value: acc.UserId})
 	req.AddCookie(&http.Cookie{Name: "xiaomichatbot_ph", Value: acc.XiaomichatbotPh})
@@ -205,17 +207,19 @@ func streamMimoAPI(acc *MimoAccount, query string, thinking bool, w http.Respons
 		MsgId:          uuid.New().String()[:32],
 		ConversationId: uuid.New().String()[:32],
 		Query:          query,
-		ModelConfig:    ModelConfig{EnableThinking: thinking, Temperature: 0, TopP: 0, WebSearchStatus: "disabled", Model: "mimo-v2-flash-studio"},
+		ModelConfig:    ModelConfig{EnableThinking: thinking, Temperature: 0.8, TopP: 0.95, WebSearchStatus: "disabled", Model: "mimo-v2-flash-studio"},
 		MultiMedias:    []any{},
 	}
 	body, _ := json.Marshal(mimoReq)
 	apiURL := fmt.Sprintf("https://aistudio.xiaomimimo.com/open-apis/bot/chat?xiaomichatbot_ph=%s", url.QueryEscape(acc.XiaomichatbotPh))
 
 	req, _ := http.NewRequest("POST", apiURL, bytes.NewReader(body))
+	req.Header.Set("Accept", "*/*")
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Origin", "https://aistudio.xiaomimimo.com")
 	req.Header.Set("Referer", "https://aistudio.xiaomimimo.com/")
-	req.Header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36")
+	req.Header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36")
+	req.Header.Set("x-timezone", "Asia/Shanghai")
 	req.AddCookie(&http.Cookie{Name: "serviceToken", Value: acc.ServiceToken})
 	req.AddCookie(&http.Cookie{Name: "userId", Value: acc.UserId})
 	req.AddCookie(&http.Cookie{Name: "xiaomichatbot_ph", Value: acc.XiaomichatbotPh})

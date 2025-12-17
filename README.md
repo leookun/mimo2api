@@ -70,7 +70,7 @@ POST /v1/chat/completions
 
 ```bash
 curl http://localhost:8080/v1/chat/completions \
-  -H "Authorization: Bearer sk-your-key" \
+  -H "Authorization: Bearer sk-default" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "mimo-v2-flash-studio",
@@ -85,7 +85,7 @@ curl http://localhost:8080/v1/chat/completions \
 
 ```bash
 curl http://localhost:8080/v1/chat/completions \
-  -H "Authorization: Bearer sk-your-key" \
+  -H "Authorization: Bearer sk-default" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "mimo-v2-flash-studio",
@@ -127,7 +127,7 @@ curl http://localhost:8080/v1/chat/completions \
 ## 获取 Mimo 账号凭证
 
 1. 登录 https://aistudio.xiaomimimo.com
-2. 打开浏览器开发者工具 → Network
+2. 打开浏览器开发者工具 → Network(网络)
 3. 发送一条消息，找到 `chat` 请求
 4. 右键 → Copy as cURL
 5. 在管理界面粘贴会自动解析
