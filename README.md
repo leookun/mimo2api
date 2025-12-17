@@ -1,6 +1,6 @@
 # Mimo2API
 
-将小米 Mimo AI 转换为 OpenAI 兼容 API，支持深度思考功能。
+将小米 Mimo AI 转换为 OpenAI 兼容 API，支持深度思考
 
 ## 安装
 
